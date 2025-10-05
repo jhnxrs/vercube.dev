@@ -33,7 +33,7 @@
                 icon="i-lucide-zap"
                 size="md"
                 variant="outline"
-                to="/playground"
+                to="/docs/getting-started/installation#try-it-online"
                 class="rounded-full px-5 py-2 h-auto text-sm"
               >
                 Try Online
