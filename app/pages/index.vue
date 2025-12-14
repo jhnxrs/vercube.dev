@@ -23,16 +23,45 @@ definePageMeta({
   colorMode: 'dark'
 })
 
-const title = page.value.seo?.title || page.value.title
-const description = page.value.seo?.description || page.value.description
+const route = useRoute()
+const site = useSiteConfig()
 
+const title = page.value.seo?.title || page.value.title || 'Vercube - Unleash your server development'
+const description = page.value.seo?.description || page.value.description || 'An ultra-efficient JavaScript server framework that runs anywhere - Node.js, Bun, or Deno - with unmatched flexibility and complete configurability for developers who refuse to sacrifice speed or control.'
+
+const siteUrl = site.url || 'https://vercube.dev'
+const canonicalUrl = `${siteUrl}${route.path}`
+
+// Define OG Image component for homepage
+defineOgImageComponent('Docs', {
+  headline: 'Next generation server framework',
+  title: 'Vercube',
+  description: 'Unleash your server development with an ultra-efficient JavaScript framework'
+}, {
+  fonts: ['Geist:400', 'Geist:600']
+})
+
+// Homepage-specific SEO (overrides global defaults)
 useSeoMeta({
   titleTemplate: '',
   title,
-  ogTitle: title,
   description,
+  ogTitle: title,
   ogDescription: description,
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/docs-light.png',
-  twitterImage: 'https://ui.nuxt.com/assets/templates/nuxt/docs-light.png'
+  ogUrl: canonicalUrl,
+  ogImageAlt: title,
+  twitterTitle: title,
+  twitterDescription: description,
+  twitterImageAlt: title
+})
+
+// Canonical URL for homepage
+useHead({
+  link: [
+    {
+      rel: 'canonical',
+      href: canonicalUrl
+    }
+  ]
 })
 </script>
