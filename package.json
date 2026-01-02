@@ -7,6 +7,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "preview": "nuxt preview",
+    "start": "node .output/server/index.mjs",
     "test:lint": "oxlint . && oxfmt --check",
     "test:tscheck": "nuxt typecheck",
     "lint:fix": "oxlint --fix . && oxfmt --no-error-on-unmatched-pattern",

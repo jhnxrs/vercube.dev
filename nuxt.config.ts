@@ -44,6 +44,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/': { prerender: true },
     '/docs': { redirect: { statusCode: 301, to: '/docs/getting-started' } },
+    '/docs/**': { prerender: false },
   },
 
   compatibilityDate: '2025-10-01',
